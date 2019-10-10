@@ -1,0 +1,59 @@
+#logo{
+	height: 70px;
+	width: 70px;
+}
+
+.container{
+	background-color: #f8f9fa;
+	height: 600px;
+}
+#homePageJumbotron{
+	background-color: #26EABA;
+	height: 500px;
+	width: 800px;
+	margin-left: 108px;
+	margin-top: 10px;
+}
+#readMoreButton{
+	margin-top: 140px;
+	margin-left: 550px;
+}
+
+#backButton{
+	margin-bottom: 50px;
+	margin-left: 650px;
+}
+#customTable{
+	background-color: white;
+	
+}
+
+tr:hover { 
+    background-color:  #f0f2f4;;
+}
+
+.btn-info{
+	 background-color: #849AA5;
+	 border: none;
+	 
+}
+.btn-primary{
+ background-color: #849AA5;
+  border: none;
+ 
+
+}
+.btn-primary:hover{
+	 background-color: #6B8793;
+}
+.btn-info:hover{
+	 background-color: #6B8793;
+}
+
+ .table-border{
+ 	border: 2px;
+ }
+
+#containerFaktura{
+	height: 100%;
+}

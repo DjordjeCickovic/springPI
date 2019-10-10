@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CenovnikReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="123bca2f-1572-4e36-afbf-13fa6ff479b1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Konekcija"/>
+	<subDataset name="Dataset1" uuid="95e8f26b-2feb-4a3f-8c4b-ac2d8dcbfd41">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Konekcija"/>
+		<parameter name="var" class="java.lang.Long"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT stavka_cenovnika.stavka_cenovnika_id,
+	roba.naziv,
+	stavka_cenovnika.cena
+FROM stavka_cenovnika,
+	roba
+WHERE 
+	 stavka_cenovnika.roba_id = roba.roba_id
+	 AND stavka_cenovnika.cenovnik_id = $P{var}]]>
+		</queryString>
+		<field name="stavka_cenovnika_id" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.label" value="stavka_cenovnika_id"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="stavka_cenovnika"/>
+		</field>
+		<field name="naziv" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="roba"/>
+		</field>
+		<field name="cena" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="cena"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="stavka_cenovnika"/>
+		</field>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[select A.cenovnik_id, A.datum_vazenja, B.naziv
+from cenovnik A, preduzece B
+where A.preduzece_id = B.preduzece_id]]>
+	</queryString>
+	<field name="cenovnik_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="cenovnik_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cenovnik"/>
+	</field>
+	<field name="datum_vazenja" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="datum_vazenja"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cenovnik"/>
+	</field>
+	<field name="naziv" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="preduzece"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="151" splitType="Stretch">
+			<staticText>
+				<reportElement x="213" y="55" width="128" height="40" uuid="c5a7af26-be39-4dd2-a82b-dc025664b6c8"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Cenovnici]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="20" uuid="1fbc030d-8cb6-4e5d-8b60-8d03a214c5da"/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="40" y="0" width="100" height="20" uuid="7009ca5c-be02-4720-bd80-0f57c0291fce"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="0" width="35" height="21" uuid="b9bc4cc1-7bf5-4f95-9d47-ec85f75858c0"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="490" y="0" width="39" height="21" uuid="a35b1b92-d100-4be4-8769-19fe1e4c1e1f"/>
+				<text><![CDATA[Strana:]]></text>
+			</staticText>
+			<image onErrorType="Blank">
+				<reportElement x="262" y="0" width="30" height="30" uuid="3dd347ec-9a7c-4bcc-95a1-77bd6cb4f54e"/>
+				<imageExpression><![CDATA["logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="20" width="185" height="30" uuid="8f32324f-1044-48ec-aa0e-f46dfe37b653">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eac8be78-dec5-4684-9bcb-314efc74a38f"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cenovnik_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="20" width="185" height="30" uuid="c5adff63-8b3e-4198-b38d-795796d38fb5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6ec93f9f-329d-4390-bc3e-bad4769a957c"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{datum_vazenja}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="185" height="20" uuid="5553b740-c341-4309-a51b-0f952ae225be"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID cenovnika]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="0" width="185" height="20" uuid="8c858eb0-352e-45d5-91f7-1f74a4d29cd6"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datum vazenja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="185" height="20" uuid="25161f45-99c6-424d-9941-dc9cbc3c4a09"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Preduzece]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="370" y="20" width="185" height="30" uuid="ba0d6251-0128-4ac8-946c-7dbed87f3e35"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{naziv}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="142" y="80" width="270" height="30" uuid="3673087e-09d6-4166-a353-98b338cca298"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset1" uuid="6c80fd44-864e-4b00-8970-03b937066ffa">
+						<datasetParameter name="var">
+							<datasetParameterExpression><![CDATA[$F{cenovnik_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="270">
+						<textField>
+							<reportElement x="0" y="0" width="90" height="30" uuid="8526a3fd-ee3b-4ea8-9893-338474ff004f"/>
+							<textFieldExpression><![CDATA[$F{stavka_cenovnika_id}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="90" y="0" width="90" height="30" uuid="ca4f46e6-41e9-41a4-83a5-6bf7dda4fd06"/>
+							<textFieldExpression><![CDATA[$F{naziv}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="180" y="0" width="90" height="30" uuid="798bb1d1-f875-4fa7-9d01-db3694b02f21"/>
+							<textFieldExpression><![CDATA[$F{cena}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement x="142" y="60" width="90" height="30" uuid="72d3e901-6880-488a-b362-9941016cc0a8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="60" width="90" height="30" uuid="4deb473e-7f30-4bcf-ba1f-c8b7a1a1dc1f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Naziv]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="60" width="92" height="30" uuid="7de761f6-8566-4c3b-b718-68bcc119e3e7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cena]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="61" width="270" height="30" uuid="4ffd5613-21e2-43eb-9d54-fbc6d99d1ffb"/>
+				<text><![CDATA[_______________________________________________]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="120" width="555" height="1" uuid="33ed4713-5052-4d6e-b6c6-20abe5a227d3"/>
+			</rectangle>
+		</band>
+	</detail>
+</jasperReport>

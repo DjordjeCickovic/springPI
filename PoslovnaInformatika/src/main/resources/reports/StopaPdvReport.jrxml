@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StopaPdvReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6f926406-de89-4d19-8458-3abc711b8c4f">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Konekcija"/>
+	<queryString language="SQL">
+		<![CDATA[select stopa_pdv.stopa_pdv_id, stopa_pdv.datum_vazenja, stopa_pdv.procenat, pdv.naziv
+ from stopa_pdv, pdv
+ where stopa_pdv.pdv_id = pdv.pdv_id]]>
+	</queryString>
+	<field name="stopa_pdv_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="stopa_pdv_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stopa_pdv"/>
+	</field>
+	<field name="datum_vazenja" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="datum_vazenja"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stopa_pdv"/>
+	</field>
+	<field name="procenat" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="procenat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stopa_pdv"/>
+	</field>
+	<field name="naziv" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pdv"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="200" y="30" width="170" height="38" uuid="95fe0a45-bf61-44b1-bc9e-2b03dc823ea7"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Stope PDV-a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="41" height="20" uuid="baf59646-25d8-4b93-acbc-119276451ff8"/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="41" y="0" width="100" height="20" uuid="040c9da8-0ddf-4559-b001-2d7adfdc5575"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="501" y="0" width="43" height="18" uuid="9fcb929f-acb6-473e-9f66-89676320e048"/>
+				<text><![CDATA[Strana:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="540" y="0" width="31" height="17" uuid="c7680994-57c5-416a-8e1f-02507809ac9b"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="141" height="30" uuid="67229407-a425-4d71-af42-a6d18b4d767d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="da047d40-654d-47fc-ada8-df7c3c6c1d0d"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="138" height="30" uuid="643df2d2-d360-44c0-bc4f-3e62443f2718">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="542c8ca7-720a-4152-beaa-dc464abd2158"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datum vazenja]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="138" height="30" uuid="a949e79b-33d6-484e-bb48-dad231ebed27">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="40766033-bbf6-41a8-badf-d74ae18754b8"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Procenat (%)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="138" height="30" uuid="e27830da-af69-4df3-a137-b02dc6544127">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="76e448f1-f042-4107-b780-58409475322a"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PDV]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="141" height="30" uuid="955738ff-737d-4616-9853-d190a633e5b6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="da047d40-654d-47fc-ada8-df7c3c6c1d0d"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{stopa_pdv_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="138" height="30" uuid="e397d412-3255-47b5-af35-dbebfda14116">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="542c8ca7-720a-4152-beaa-dc464abd2158"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{datum_vazenja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="0" width="138" height="30" uuid="2c1f0b94-1d38-4de6-9c04-37940bc1b2ce">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="40766033-bbf6-41a8-badf-d74ae18754b8"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{procenat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="138" height="30" uuid="acfbe25e-de32-462e-890b-de65a50e0bfb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d3f9d1a4-504d-4010-9d4a-6c1d33b52c6a"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{naziv}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

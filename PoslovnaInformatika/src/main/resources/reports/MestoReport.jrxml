@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MestoReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="80b6c39f-3ad6-4946-abe7-82f633f09d68">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Konekcija"/>
+	<queryString language="SQL">
+		<![CDATA[select * from mesto]]>
+	</queryString>
+	<field name="mesto_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="mesto_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mesto"/>
+	</field>
+	<field name="drzava" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="drzava"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mesto"/>
+	</field>
+	<field name="grad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="grad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mesto"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="30" width="100" height="30" uuid="dc995f19-df61-4fdb-969a-9847ca1c09ee"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Mesta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="20" uuid="f85c2aaa-14a1-4100-b312-49ecda761c85"/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="42" y="0" width="100" height="20" uuid="d04ff06d-aa20-4fbc-8bca-c6040f05a06a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="500" y="0" width="40" height="20" uuid="74f082a7-c592-4632-91f1-dc279ce37090"/>
+				<text><![CDATA[Strana:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="540" y="0" width="35" height="20" uuid="9fc4b6b4-379c-4d6b-a3f4-9acf542c997c"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="185" height="30" uuid="83a382a0-e851-4437-b7af-eaed3a9fc279">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd18804c-1e65-413e-be48-27d88b8f70b2"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="0" width="185" height="30" uuid="745d747a-b882-4088-bc92-2b87fccf76d8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d90eae39-dab8-4717-ab9e-9c5e8a79449b"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mesto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="185" height="30" uuid="b75b6632-7e08-429f-a063-06d5382b5797">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9db72051-f333-41e1-a33d-53d1a42aa1b5"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Drzava]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="185" height="30" uuid="33cfe1ea-05f1-49e5-90b1-5339b4d4bd03">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd18804c-1e65-413e-be48-27d88b8f70b2"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{mesto_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="0" width="185" height="30" uuid="bf5d941b-cfe3-4a5a-8f31-4c67894bb9f0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="88dbe25b-633d-4a03-a756-9e0e76ce9c9c"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{grad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="185" height="30" uuid="a15ed134-bad7-453c-ada9-0e66dd935a06">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34e70af2-0deb-4466-bda6-37a233722687"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{drzava}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

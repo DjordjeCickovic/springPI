@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PoslovnaGodinaReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="89d81504-a625-4936-a0ca-da32d875a5a5">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Konekcija"/>
+	<queryString language="SQL">
+		<![CDATA[select * from poslovna_godina]]>
+	</queryString>
+	<field name="poslovna_godina_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="poslovna_godina_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="poslovna_godina"/>
+	</field>
+	<field name="godina" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="godina"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="poslovna_godina"/>
+	</field>
+	<field name="zakljucena" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="zakljucena"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="poslovna_godina"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="192" y="30" width="171" height="30" uuid="c118c073-c27d-4d22-99be-eb62a1bad1be"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Poslovne godine]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="20" uuid="6f3be4d5-0358-4f0a-9555-f4266b208211"/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="40" y="0" width="100" height="20" uuid="93a1f953-334e-42dd-8849-176a2881a88c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="505" y="0" width="39" height="20" uuid="a9331aed-0901-4997-83e8-23024b9a2361"/>
+				<text><![CDATA[Strana:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="544" y="0" width="26" height="20" uuid="0d251d13-745d-4f88-b982-9127c97f77b3"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="185" height="30" uuid="ad456603-6c21-4556-bf37-42b48bf4acbc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dd295952-9822-4efd-b955-b6757a52d27d"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="0" width="185" height="30" uuid="ee74242f-a025-47ac-8815-ce646e73da76">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="89691e4f-5de7-4780-9921-028fda734abd"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Godina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="185" height="30" uuid="279d183b-d4fc-42ed-9847-cc944b74cea6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b4d3f604-5dd5-4556-8be0-6b5c4c08336d"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Zakljucena?]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="185" height="30" uuid="7c9b4502-d146-49ba-95a4-b648174d16e6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dd295952-9822-4efd-b955-b6757a52d27d"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{poslovna_godina_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="0" width="185" height="30" uuid="c65d8c4e-fe60-4b0d-911b-499332d77e39">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="89691e4f-5de7-4780-9921-028fda734abd"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{godina}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="185" height="30" uuid="ec2c6937-792a-4eec-88b8-1ece4e174e16">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b4d3f604-5dd5-4556-8be0-6b5c4c08336d"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{zakljucena}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

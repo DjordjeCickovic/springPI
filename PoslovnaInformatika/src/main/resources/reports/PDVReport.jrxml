@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PDVReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0b73c6ec-64fb-4064-b5a2-220d3c3cff81">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Konekcija"/>
+	<queryString language="SQL">
+		<![CDATA[select * from pdv]]>
+	</queryString>
+	<field name="pdv_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="pdv_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pdv"/>
+	</field>
+	<field name="naziv" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pdv"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="40" width="100" height="30" uuid="3608ac62-42cb-4a5d-8505-49eed2a4474d"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[PDV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="44" height="20" uuid="4b05f5f8-3c76-4a03-a8fe-af577a178236"/>
+				<text><![CDATA[Strana:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="545" y="0" width="25" height="20" uuid="6da0b8c6-e852-468a-b3c2-a2ed7a561469"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="20" uuid="040765ad-9af9-43bf-aa0f-fd0d77f08653"/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="40" y="0" width="100" height="20" uuid="833be28a-1e2f-40e4-8196-c8e886f12970"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="278" height="30" uuid="2b2f2029-18c3-40e2-8299-bd3a5c8ecc92">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a3a224d2-5f44-40aa-adf0-cbf7600b8384"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="0" width="277" height="30" uuid="46bbedde-bddb-454a-9c66-065e3db4e6ca">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d57f6068-a6c3-43da-9624-66e999d07384"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Naziv]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="278" height="30" uuid="a51c6ece-1594-49f0-8ba3-e0d34b110d6b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a3a224d2-5f44-40aa-adf0-cbf7600b8384"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{pdv_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="278" y="0" width="277" height="30" uuid="471d522d-8d30-4afc-9050-650cbc469dc3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d57f6068-a6c3-43da-9624-66e999d07384"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{naziv}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StavkaCenovnikaReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d2af7d6f-33fa-4e3b-87a8-6d78d48e458d">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Konekcija"/>
+	<queryString language="SQL">
+		<![CDATA[select stavka_cenovnika.stavka_cenovnika_id, cena, cenovnik_id, roba.naziv
+from stavka_cenovnika, roba
+where stavka_cenovnika.roba_id = roba.roba_id]]>
+	</queryString>
+	<field name="stavka_cenovnika_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="stavka_cenovnika_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stavka_cenovnika"/>
+	</field>
+	<field name="cena" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="cena"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stavka_cenovnika"/>
+	</field>
+	<field name="cenovnik_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="cenovnik_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stavka_cenovnika"/>
+	</field>
+	<field name="naziv" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="roba"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="30" width="200" height="40" uuid="632ff66d-b641-414f-a6a7-05f76d1c08c8"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Stavke cenovnika]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="20" uuid="e08b77ae-df75-428a-bd0f-68deb85f619d"/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="40" y="0" width="100" height="20" uuid="389b6240-a2c6-4406-992f-af7f11842410"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="500" y="0" width="40" height="20" uuid="1eecdd29-ee15-4428-a772-0cb3b673f3f1"/>
+				<text><![CDATA[Strana:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="540" y="0" width="35" height="20" uuid="3931ec3b-ae0a-4d95-8249-36b312d79fa2"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="141" height="30" uuid="884e646d-1963-48a0-a92d-0b0e656ab22f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe13b0e8-b5cb-4f3f-91df-3b88b7dd0e97"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="138" height="30" uuid="b8aefd25-d4a8-4738-8393-3b0848461a04">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d25f5640-1f22-4698-a9c1-be308d30c371"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cena]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="138" height="30" uuid="a15da9a2-74e4-450c-ba33-3374d4bab1e8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="135d8fb5-057a-430b-8276-23c632621d2f"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cenovnik]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="138" height="30" uuid="263e0bc8-a68c-4c2e-8011-e1f2dc7ce6d2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="31d7d062-a8e3-41aa-848a-93f83b4a3b27"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Roba]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="141" height="30" uuid="9de504e6-b925-414c-9c7c-b8e1baf9519a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe13b0e8-b5cb-4f3f-91df-3b88b7dd0e97"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{stavka_cenovnika_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="138" height="30" uuid="18fcb121-3c84-4c75-b10c-640801f46b5d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d25f5640-1f22-4698-a9c1-be308d30c371"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cena}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="0" width="138" height="30" uuid="ca577f25-b049-45b1-993d-a4f45fbc4473">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="135d8fb5-057a-430b-8276-23c632621d2f"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cenovnik_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="138" height="30" uuid="ae1fcf27-1f72-4bcf-a722-a7fcf7f4e1ff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="44e7fbe3-0e8f-4da2-adb5-951ac0ea7bb4"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{naziv}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

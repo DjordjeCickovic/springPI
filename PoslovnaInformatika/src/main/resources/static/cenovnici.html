@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/myStyle.css">
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/cenovnik.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/slate/bootstrap.min.css" rel="stylesheet" integrity="sha384-FBPbZPVh+7ks5JJ70RJmIaqyGnvMbeJ5JQfEbW0Ac6ErfvEg9yG56JQJuMNptWsH" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootlint/0.16.7/bootlint.min.js" integrity="sha384-3T50BVAepXDP+/77qijxE3Yj8K/jaICuCvy27UZhXdMymNl/ojOww5yJKFINHsvK" crossorigin="anonymous"></script>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<title>Cenovnici</title>
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="index.html"><img src="img/logo.png"
+				id="logo"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Faktura </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="faktura.html">Fakture</a> <a
+								class="dropdown-item" href="stavkaFakture.html">Stavke
+								fakture</a>
+						</div></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Cenovnik </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="cenovnici.html">Cenovnici</a> <a
+								class="dropdown-item" href="stavkaCenovnika.html">Stavke
+								cenovnika</a>
+						</div></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Roba </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="roba.html">Roba</a> <a
+								class="dropdown-item" href="grupaRobe.html">Grupe robe</a>
+						</div></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> PDV </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="pdv.html">PDV</a> <a
+								class="dropdown-item" href="stopaPdv.html">Stopa PDV</a>
+						</div></li>
+					<li class="nav-item"><a class="nav-link" href="preduzece.html">Preduzeca</a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="poslovnaGodina.html">Poslovna godina</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="poslovniPartner.html">Poslovni partner</a></li>
+					<li class="nav-item"><a class="nav-link" href="mesta.html">Mesta</a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="jedinicaMere.html">Jedinice mere</a></li>
+				</ul>
+			</div>
+		</nav>
+		<br>
+		<div id="CenovniksListPanel" class="container-fluid">
+			<form class="form-inline">
+				<div class="form-row">
+					<div class="form-group mx-sm-3 mb-2">
+						<label for="inputEmail4">Pretraga po:</label>
+					</div>
+					<div class="form-group mx-sm-3 mb-2">
+						<select selected class="custom-select mr-sm-2" id="tipPretrage">
+							<option value="preduzece" selected="selected">Id-u
+								preduzeca</option>
+						</select>
+					</div>
+					<div class="form-group mx-sm-3 mb-2">
+						<input class="form-control" type="text"
+							placeholder="Termin za pretragu" id="terminPretrage">
+					</div>
+					<div class="form-group mx-sm-3 mb-2">
+						<div class="form-group mx-sm-3 mb-2">
+							<input class="form-control" type="text" placeholder="OD"
+								id="opseg1">
+						</div>
+						<div class="form-group mx-sm-3 mb-2">
+							<input class="form-control" type="text" placeholder="DO"
+								id="opseg2">
+						</div>
+						<div class="form-group col-md-2">
+							<button type="button"
+								class="btn btn-primary form-group mx-sm-3 mb-2"
+								id="pretraziButton">Pretrazi!</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<table class="table table-hover table-bordered" id="customTable">
+			</table>
+		</div>
+		<div id="CenovniksDetailPanel" class="container-fluid">
+			<form class="form-horizontal" role="form">
+				<input id="CenovnikID" type="hidden" />
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="CenovnikDatumVazenja">Datum
+						vazenja:</label>
+					<div class="col-sm-10">
+						<input class="form-control" id="CenovnikDatumVazenja" type="text"
+							placeholder="dd-mm-yyyy" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="CenovnikPreduzece">Preduzece:</label>
+					<div class="col-sm-10">
+						<select class="form-control" id="CenovnikPreduzece">
+						</select>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="container-fluid">
+			<button type="button" class="btn btn-info btn-lg" id="PreviousButton">
+				&#8882; Previous</button>
+			<button type="button" class="btn btn-info btn-lg" id="NextButton">
+				Next &#8883;</button>
+			<br />
+			<br /></br>
+			<button type="button" class="btn btn-info btn-lg" id="NewButton">
+				Novi cenovnik</button>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<div class="float-right">
+				<a href="http://localhost:8080/api/cenovnik/cenovnikreport">Generate
+					report</a>
+			</div>
+			<button type="button" class="btn btn-info btn-lg"
+				id="BackToListButton">Back to the list</button>
+			<button type="button" class="btn btn-primary btn-lg" id="SaveButton">
+				Save</button>
+			<button type="button" class="btn btn-danger btn-lg" id="RemoveButton">
+				Delete</button>
+		</div>
+	</div>
+
+</body>
+</html>

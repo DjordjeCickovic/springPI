@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PoslovniPartnerReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="da9a48e9-1c92-4e4a-952d-d8a24d8d9887">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Konekcija"/>
+	<queryString language="SQL">
+		<![CDATA[select poslovni_partner.poslovni_partner_id, poslovni_partner.adresa, poslovni_partner.naziv, poslovni_partner.vrsta, mesto.grad, preduzece.naziv
+from poslovni_partner, mesto, preduzece
+where poslovni_partner.mesto_id = mesto.mesto_id and
+poslovni_partner.preduzece_id = preduzece.preduzece_id]]>
+	</queryString>
+	<field name="poslovni_partner_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="poslovni_partner_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="poslovni_partner"/>
+	</field>
+	<field name="adresa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="adresa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="poslovni_partner"/>
+	</field>
+	<field name="naziv" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="poslovni_partner"/>
+	</field>
+	<field name="vrsta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="vrsta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="poslovni_partner"/>
+	</field>
+	<field name="grad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="grad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mesto"/>
+	</field>
+	<field name="COLUMN_6" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="preduzece"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="200" y="40" width="160" height="40" uuid="c82f98b8-0319-4c02-ad39-1cce41c28e76"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Poslovni partneri]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="20" uuid="d430e6e1-63a0-4aef-823b-37683a5a26d3"/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="-1" width="37" height="22" uuid="901cb7a0-b8f6-4d23-b38f-35c84c1e1b76"/>
+				<text><![CDATA[Strana:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="537" y="0" width="33" height="21" uuid="5d3c86b8-2483-4c85-8ee9-cf053e4e40f7"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="40" y="0" width="100" height="20" uuid="f9ba827e-9e07-4fe5-91e3-4304e1a28128"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="30" uuid="d7b229be-be04-4503-ba36-13fbafd7d058">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c6bf6a6-b83e-455c-bf1f-3f1701978834"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="92" height="30" uuid="6240800a-7ba9-440d-a5fc-8bd40ad2a66c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="178c1f6c-33ff-4e09-a83f-9dfdddead29f"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Adresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="0" width="92" height="30" uuid="d77fccb6-27c4-4b7c-9c7b-c3471cf0f205">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b5127ed-463c-4e65-85f3-b58bafecb7a6"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vrsta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="0" width="92" height="30" uuid="3f788ce5-14be-4a90-b11e-a038d3fd84e4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a725933d-bfb5-4441-9f49-e9c92d56e57e"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mesto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="0" width="100" height="30" uuid="9954248d-84a6-435f-a2db-33e2917c7562">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="008b67f3-d0d6-466e-b0f9-3646444068c6"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Preduzece]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="92" height="30" uuid="c1c8ce9a-78ec-46fe-bd07-7eee7a6f7878">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34444255-016b-4367-ac29-f1fdee04d361"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Naziv]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="50" height="30" uuid="1e028fc5-b9ba-4e0e-b491-b0c72b8a7359">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c6bf6a6-b83e-455c-bf1f-3f1701978834"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{poslovni_partner_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="0" width="92" height="30" uuid="733fdf90-0e91-41d7-a652-38be8a91576f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34444255-016b-4367-ac29-f1fdee04d361"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{naziv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="0" width="92" height="30" uuid="e23e421e-e458-4c6b-adb9-84bf60d93b07">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b5127ed-463c-4e65-85f3-b58bafecb7a6"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{vrsta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="92" height="30" uuid="8dd84e49-c4f2-46d0-959f-b9912af30427">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="178c1f6c-33ff-4e09-a83f-9dfdddead29f"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{adresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="248" y="0" width="92" height="30" uuid="5f96ab1e-1adf-4173-8b2b-7ba4547d38fb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c101bb7b-cd64-462b-ad5f-e81ef610b3f1"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{grad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="100" height="30" uuid="84f264d5-eb92-47cc-9690-89230a4f0d08">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a63c9303-42ba-4f57-a8e3-813927491b9b"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_6}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

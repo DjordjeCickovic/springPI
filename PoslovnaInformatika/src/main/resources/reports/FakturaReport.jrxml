@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MyFirstReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df476b76-8862-40ab-b349-37b32f654dc1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Konekcija"/>
+	<subDataset name="Dataset1" uuid="a768c769-3b74-4ffe-86e7-a0a8a7107773">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+		<parameter name="Var2" class="java.lang.Long"/>
+		<queryString language="SQL">
+			<![CDATA[select faktura.osnovica, faktura.ukupanpdv, faktura.iznos_za_placanje, roba.naziv, stavka_fakture.jedinicna_cena, stavka_fakture.kolicina, stavka_fakture.osnovica_zapdv, stavka_fakture.procenatpdv, stavka_fakture.rabat, stavka_fakture.iznospdv, stavka_fakture.iznos_stavke 
+from stavka_fakture, faktura, roba
+where faktura.faktura_id = stavka_fakture.faktura_id and
+roba.roba_id = stavka_fakture.roba_id and
+faktura.faktura_id =  $P{Var2}]]>
+		</queryString>
+		<field name="osnovica" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="osnovica"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+		</field>
+		<field name="ukupanpdv" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="ukupanpdv"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+		</field>
+		<field name="iznos_za_placanje" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="iznos_za_placanje"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+		</field>
+		<field name="naziv" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="roba"/>
+		</field>
+		<field name="jedinicna_cena" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="jedinicna_cena"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="stavka_fakture"/>
+		</field>
+		<field name="kolicina" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.label" value="kolicina"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="stavka_fakture"/>
+		</field>
+		<field name="osnovica_zapdv" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="osnovica_zapdv"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="stavka_fakture"/>
+		</field>
+		<field name="procenatpdv" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="procenatpdv"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="stavka_fakture"/>
+		</field>
+		<field name="rabat" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="rabat"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="stavka_fakture"/>
+		</field>
+		<field name="iznospdv" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="iznospdv"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="stavka_fakture"/>
+		</field>
+		<field name="iznos_stavke" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.label" value="iznos_stavke"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="stavka_fakture"/>
+		</field>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[SELECT poslovni_partner.naziv,
+	poslovna_godina.godina,
+	preduzece.naziv,
+	faktura.ukupanpdv,
+	faktura.osnovica,
+	faktura.iznos_za_placanje,
+	faktura.datum_valute,
+	faktura.datum_fakture,
+	faktura.faktura_id
+FROM faktura,
+	poslovni_partner,
+	poslovna_godina,
+	preduzece
+WHERE
+	faktura.preduzece_id = preduzece.preduzece_id and
+	faktura.poslovna_godina_id = poslovna_godina.poslovna_godina_id and
+	faktura.poslovni_partner_id = poslovni_partner.poslovni_partner_id]]>
+	</queryString>
+	<field name="naziv" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="poslovni_partner"/>
+	</field>
+	<field name="godina" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="godina"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="poslovna_godina"/>
+	</field>
+	<field name="COLUMN_3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="preduzece"/>
+	</field>
+	<field name="ukupanpdv" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="ukupanpdv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="osnovica" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="osnovica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="iznos_za_placanje" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="iznos_za_placanje"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="datum_valute" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="datum_valute"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="datum_fakture" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="datum_fakture"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<field name="faktura_id" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="faktura_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="faktura"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="151" splitType="Stretch">
+			<staticText>
+				<reportElement x="227" y="65" width="100" height="30" uuid="de5c6cf2-9c89-4816-9eb5-45f9aaa0f92c"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Fakture]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="20" uuid="90a866d2-a2e2-4c2f-88dc-cebe58bc858f"/>
+				<text><![CDATA[Datum:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="40" y="0" width="100" height="20" uuid="f484d1ea-6a94-490a-9f38-1336a27b04d7"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="500" y="0" width="40" height="20" uuid="daeeef91-c510-47a4-8edb-5298b6aa5eac"/>
+				<text><![CDATA[Strana:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="540" y="0" width="29" height="20" uuid="4dc93ec4-6d68-4070-9045-31bd99fafa56"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Blank">
+				<reportElement x="264" y="0" width="30" height="30" uuid="d98e384f-054d-413a-8220-522cd347bd2b"/>
+				<imageExpression><![CDATA["logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="169" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="30" width="61" height="20" uuid="43771e6b-769b-4a32-80e4-8d86c9f7b1b9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ae04ee39-14d7-43a2-b52a-6151739d9978"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{faktura_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="30" width="70" height="20" uuid="2bdcc4f4-de38-498c-bf09-d115b699bf60">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9ea372c-4608-489f-93b3-7a5784782a60"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{datum_fakture}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="30" width="70" height="20" uuid="64b8e1ff-b3b8-4184-b2fd-42b78d9bee7d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a014f58e-f9e8-448b-9c6e-40d4f31c5c02"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{datum_valute}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="30" width="90" height="20" uuid="94e44981-d3cc-4cf7-9ee6-343d78b7de04"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{godina}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="30" width="79" height="20" uuid="7fb85aab-fe73-4202-b4ec-b1e69e098378"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{naziv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="30" width="60" height="20" uuid="333531b1-e7f6-4e55-b220-258148390bc6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COLUMN_3}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="90" y="80" width="220" height="33" uuid="a4d0afe7-a536-4efd-8d3d-9829bb2dd542"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset1" uuid="2db69d0d-c3b9-4673-99ab-16767e7c555c">
+						<datasetParameter name="Var2">
+							<datasetParameterExpression><![CDATA[$F{faktura_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="33" width="220">
+						<textField>
+							<reportElement x="0" y="0" width="220" height="20" uuid="c0f88d1a-f7ba-4e4a-b5a7-7eeb6bec4253"/>
+							<textFieldExpression><![CDATA[$F{naziv}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="60" y="13" width="70" height="20" uuid="02017a21-3605-42bb-885f-50f1dad2479d"/>
+							<textFieldExpression><![CDATA[$F{jedinicna_cena}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="13" width="60" height="20" uuid="1b5d0d8b-e8b9-4c92-a45d-7ee57cd61038"/>
+							<textFieldExpression><![CDATA[$F{kolicina}+"x"]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="130" y="13" width="80" height="20" uuid="03b00491-02de-40ea-ba12-bc2d35a16c9c"/>
+							<textFieldExpression><![CDATA[$F{osnovica_zapdv}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement x="10" y="12" width="61" height="18" uuid="c5a6d395-bcca-4b86-b4e7-28be9c8bba18"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Broj fakture]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="12" width="70" height="18" uuid="e234a842-629b-4b11-b2d9-7579a6a2b6ce"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datum fakture]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="10" width="70" height="18" uuid="f585bdee-f68e-4e5c-a2aa-a57813d78b84"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Datum valute]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="12" width="90" height="18" uuid="dd9c9dc4-6c25-4339-a012-a75b1dd97c9e"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Poslovna godina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="12" width="60" height="18" uuid="775e2452-9b8c-4dee-8547-c94466061892"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Preduzece]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="12" width="79" height="18" uuid="626f22a5-f473-4f18-9967-f926d4604e96"/>
+				<textElement textAlignment="Center" markup="styled">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Poslovni partner]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="66" width="50" height="20" uuid="c1088f27-b6a3-427e-9cd8-7be481845322"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Roba]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="66" width="34" height="20" uuid="90a5a75f-bf95-43f7-80d0-8f8ddc228de7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cena]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="66" width="44" height="20" uuid="fe7dbab6-d330-42a8-9d7f-346725c1619e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ukupno]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="320" y="151" width="60" height="17" uuid="3b2cdf75-84fe-4616-8b08-00b2c89a283b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e1455ad-3d3a-4f38-9e1b-432c15cfce37"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{osnovica}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="400" y="130" width="70" height="21" uuid="34472e53-ba58-48de-8986-10607b570683">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="61255879-a7ea-4814-988f-f5064fdd669c"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ukupan PDV]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="480" y="151" width="78" height="17" uuid="cd7e2442-fe13-457a-b421-db9a7bfdcc64">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2aa4896c-b530-4fe7-80ec-a5c325f6d1e6"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{iznos_za_placanje}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="400" y="151" width="70" height="17" uuid="3cf4920a-cab5-4fc0-959b-aae8c1642eb1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="61255879-a7ea-4814-988f-f5064fdd669c"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ukupanpdv}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="320" y="130" width="60" height="21" uuid="dcec1e49-6feb-40cb-af19-c96e45f0f09b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9e1455ad-3d3a-4f38-9e1b-432c15cfce37"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Osnovica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="480" y="130" width="78" height="21" uuid="771cf457-5d99-4a4b-af6e-39a01a05cd2c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2aa4896c-b530-4fe7-80ec-a5c325f6d1e6"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ukupan iznos]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="168" width="558" height="1" uuid="fb43b130-95d1-4655-a4b1-adf4e2ff3dad"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="90" y="66" width="180" height="30" uuid="334d3bdd-a82a-49fc-bb64-5738d19b80fe"/>
+				<text><![CDATA[______________________________]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
