@@ -192,7 +192,7 @@ var StavkaFaktureManager = {
                 StavkaFaktureManager.refreshList();
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                alert(textStatus);
+                alert(jqXHR + " " + textStatus + " " + errorThrown);
             }
         });
     },

@@ -3,6 +3,10 @@ package com.example.poslovna_informatika.dto;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.example.poslovna_informatika.model.JedinicaMere;
 
 public class JedinicaMereDTO implements Serializable {
@@ -12,6 +16,8 @@ public class JedinicaMereDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private long id;
+	@NotEmpty(message = "Polje ne sme biti prazno!")
+	@Pattern(regexp="^[A-Za-z]*$", message="Polje sme sadrzati samo slova")
 	private String naziv;
 	private List<RobaDTO> robeDTO;
 

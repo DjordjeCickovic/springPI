@@ -16,6 +16,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.thymeleaf.spring4.expression.Fields;
 
 import com.example.poslovna_informatika.dto.StavkaFaktureDTO;
 import com.example.poslovna_informatika.model.Faktura;
@@ -212,8 +215,13 @@ public class StavkaFaktureController {
 	}
 
 	@PostMapping(consumes = "application/json")
-	public ResponseEntity<StavkaFaktureDTO> saveItem(@RequestBody StavkaFaktureDTO stavkaFaktureDTO) {
-
+	public ResponseEntity<?> saveItem(@Validated @RequestBody StavkaFaktureDTO stavkaFaktureDTO, Errors errors) {
+		if(errors.hasErrors()) {
+			Console.println("SVE GRESKE U STRING" + errors.getAllErrors().toString());
+	
+			return new ResponseEntity(errors.getAllErrors(), HttpStatus.BAD_REQUEST);
+		}
+		
 		StavkaFakture sf = new StavkaFakture();
 		sf.setKolicina(stavkaFaktureDTO.getKolicina());
 
@@ -338,11 +346,10 @@ public class StavkaFaktureController {
 
 		sf = stavkaFaktureService.save(sf);
 		return new ResponseEntity<StavkaFaktureDTO>(new StavkaFaktureDTO(sf), HttpStatus.CREATED);
-
+		
 	}
-
 	@PutMapping(value = "/{id}", consumes = "application/json")
-	public ResponseEntity<StavkaFaktureDTO> updateItem(@RequestBody StavkaFaktureDTO stavkaFaktureDTO,
+	public ResponseEntity<StavkaFaktureDTO> updateItem(@Validated @RequestBody StavkaFaktureDTO stavkaFaktureDTO,
 			@PathVariable("id") long id) {
 		StavkaFakture sf = stavkaFaktureService.findOne(id);
 

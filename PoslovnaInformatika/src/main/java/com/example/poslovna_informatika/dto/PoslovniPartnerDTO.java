@@ -2,14 +2,23 @@ package com.example.poslovna_informatika.dto;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import com.example.poslovna_informatika.model.PoslovniPartner;
+
+import scala.Console;
 
 public class PoslovniPartnerDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private long id;
+	@NotEmpty(message = "Polje ne sme biti prazno!")
 	private String naziv;
+	@NotEmpty(message = "Polje ne sme biti prazno!")
 	private String adresa;
+	@NotEmpty(message = "Polje ne sme biti prazno!")
 	private String vrsta;
 	private MestoDTO mesto;
 	private PreduzeceDTO preduzece;

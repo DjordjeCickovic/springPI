@@ -2,12 +2,18 @@ package com.example.poslovna_informatika.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.example.poslovna_informatika.model.PoslovnaGodina;
 
 public class PoslovnaGodinaDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private long id;
+	@NotEmpty(message = "Polje ne sme biti prazno!")
+	@Pattern(regexp="^[0-9]{4}*$", message="Polje sme sadrzati samo brojeve i 4 cifre")
 	private int godina;
 	private boolean zakljucena;
 

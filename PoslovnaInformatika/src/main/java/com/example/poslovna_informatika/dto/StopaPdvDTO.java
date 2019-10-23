@@ -2,7 +2,15 @@ package com.example.poslovna_informatika.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import com.example.poslovna_informatika.model.StopaPDV;
+
+import scala.Console;
 
 public class StopaPdvDTO implements Serializable {
 
@@ -10,6 +18,7 @@ public class StopaPdvDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private long id;
 	private double procenat;
+	@NotEmpty(message = "Polje ne sme biti prazno!")
 	private String datumVazenja;
 	private PdvDTO pdv;
 

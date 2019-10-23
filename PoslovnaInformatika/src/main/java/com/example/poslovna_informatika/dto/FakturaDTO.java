@@ -3,6 +3,8 @@ package com.example.poslovna_informatika.dto;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.example.poslovna_informatika.model.Faktura;
 
 public class FakturaDTO implements Serializable {
@@ -12,7 +14,9 @@ public class FakturaDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private long id;
+	@NotEmpty(message = "Polje ne sme biti prazno!")
 	private String datumFakture;
+	@NotEmpty(message = "Polje ne sme biti prazno!")
 	private String datumValute;
 	private double osnovica;
 	private double ukupanPDV;

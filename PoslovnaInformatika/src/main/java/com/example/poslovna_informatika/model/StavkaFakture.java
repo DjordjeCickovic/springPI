@@ -9,6 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "stavka_fakture")
@@ -18,7 +23,7 @@ public class StavkaFakture {
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "stavka_fakture_id", unique = true, nullable = false)
 	private long id;
-
+	
 	@Column(nullable = false)
 	private int kolicina;
 

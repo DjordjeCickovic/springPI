@@ -14,6 +14,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +40,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import scala.Console;
 
 @RestController
 @RequestMapping(value = "api/grupa-robe")
@@ -132,7 +135,12 @@ public class GrupaRobeController {
 	}
 
 	@PostMapping(consumes = "application/json")
-	public ResponseEntity<GrupaRobeDTO> saveItem(@RequestBody GrupaRobeDTO grupaRobeDTO) {
+	public ResponseEntity<GrupaRobeDTO> saveItem(@Validated @RequestBody GrupaRobeDTO grupaRobeDTO, Errors errors) {
+		if(errors.hasErrors()) {
+			Console.println("SVE GRESKE U STRING" + errors.getAllErrors().toString());
+	
+			return new ResponseEntity(errors.getAllErrors(), HttpStatus.BAD_REQUEST);
+		}
 		GrupaRobe gr = new GrupaRobe();
 		gr.setNaziv(grupaRobeDTO.getNaziv());
 

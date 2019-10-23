@@ -2,6 +2,8 @@ package com.example.poslovna_informatika.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Min;
+
 import com.example.poslovna_informatika.model.StavkaCenovnika;
 
 public class StavkaCenovnikaDTO implements Serializable {
@@ -11,6 +13,7 @@ public class StavkaCenovnikaDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private long id;
+	@Min(value=1, message = "cena mora biti veca od nula")
 	private double cena;
 	private RobaDTO roba;
 	private CenovnikDTO cenovnik;

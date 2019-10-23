@@ -2,6 +2,12 @@ package com.example.poslovna_informatika.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.example.poslovna_informatika.model.StavkaFakture;
 
 public class StavkaFaktureDTO implements Serializable {
@@ -11,6 +17,7 @@ public class StavkaFaktureDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private long id;
+	@Min(value=1, message = "{kolicina.size}")
 	private int kolicina;
 	private double jedinicnaCena;
 	private double rabat;

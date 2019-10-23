@@ -4,6 +4,10 @@ import com.example.poslovna_informatika.model.Roba;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class RobaDTO implements Serializable {
 
 	/**
@@ -11,6 +15,8 @@ public class RobaDTO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private long id;
+	@NotEmpty(message = "Polje ne sme biti prazno!")
+	@Pattern(regexp="^[A-Za-z]*$", message="Polje sme sadrzati samo slova")
 	private String naziv;
 	private JedinicaMereDTO jedinicaMere;
 	private GrupaRobeDTO grupaRobe;

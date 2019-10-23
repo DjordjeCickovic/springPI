@@ -5,10 +5,15 @@ import com.example.poslovna_informatika.model.Cenovnik;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class CenovnikDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private long id;
+	@NotEmpty(message = "Polje ne sme biti prazno!")
 	private String datumVazenja;
 	private PreduzeceDTO preduzece;
 	private List<StavkaCenovnikaDTO> stavkeCenovnikaDTO;
